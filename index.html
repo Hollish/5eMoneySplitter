@@ -132,7 +132,8 @@
 				var gold;
 				var platinum;
 
-				var players
+				var players;
+				var playerNames;
 
 				if (document.getElementById("copperInput").value != "")
 				{
@@ -179,6 +180,8 @@
 				if (document.getElementById("playersInput").value != "")
 				{
 					playerNames = document.getElementById("playersInput").value.split(";");
+					console.log(playerNames)
+					console.log(playerNames[0])
 					players = parseInt(playerNames.length);
 				}				
 				else
@@ -342,7 +345,7 @@
 					row.className = "toBeDeleted";
 					
 					var cell = document.createElement('td');
-					cell.appendChild(document.createTextNode(playersArray.name));
+					cell.appendChild(document.createTextNode(playersArray[i-1].name));
 					row.appendChild(cell);
 
 					var cell = document.createElement('td');
