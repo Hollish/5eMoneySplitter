@@ -50,9 +50,9 @@
 						<div class="col-md-8">
 							<div class="input-group input-group-sm mb-3">
 									<div class="input-group-prepend">
-										<span class="input-group-text bg-dark text-white" id="players">Number of Players</span>
+										<span class="input-group-text bg-dark text-white" id="players">Player Names (comma separated)</span>
 									</div>
-								<input type="number" id="playersInput" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+								<input type="text" id="playersInput" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
 							</div>	
 							<table class="table table-sm" id="output">
 								<tr>
@@ -178,7 +178,8 @@
 	
 				if (document.getElementById("playersInput").value != "")
 				{
-					players = parseInt(document.getElementById("playersInput").value);
+					playerNames = document.getElementById("playersInput").split(";");
+					players = parseInt(playerNames.length);
 				}				
 				else
 				{
@@ -191,6 +192,7 @@
 				for (i=0; i<players; i++)
 				{
 					playersArray.push({
+						name: playerNames[i],
 						copper: 0,
 						silver: 0,
 						electrum: 0,
@@ -340,7 +342,7 @@
 					row.className = "toBeDeleted";
 					
 					var cell = document.createElement('td');
-					cell.appendChild(document.createTextNode("Player " + i));
+					cell.appendChild(document.createTextNode(playersArray.name));
 					row.appendChild(cell);
 
 					var cell = document.createElement('td');
